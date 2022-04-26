@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_navigation"
+    app:startDestination="@id/nav_prediction_list">
+    <fragment
+        android:id="@+id/nav_prediction_list"
+        android:name="com.example.elparking_test.presentation.PredictionListFragment"
+        android:label="PredictionListFragment"
+        tools:layout="@layout/fragment_prediction_list">
+        <action android:id="@+id/action_main_to_detail_fragment"
+            app:destination="@+id/nav_prediction_detail"/>
+    </fragment>
+    <fragment
+        android:id="@+id/nav_prediction_detail"
+        android:name="com.example.elparking_test.presentation.PredictionDetailFragment"
+        android:label="PredictionDetailFragment"
+        tools:layout="@layout/fragment_prediction_detail">
+    </fragment>
+</navigation>

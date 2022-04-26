@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="prediction"
+            type="com.example.elparking_test.core.domain.Prediction" />
+    </data>
+<FrameLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/text_margin">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="5dp">
+
+            <ImageView
+                android:id="@+id/item_prediction_avatar"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                app:srcCompat="@android:mipmap/sym_def_app_icon" />
+
+            <LinearLayout
+                android:layout_width="270dp"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/item_prediction_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{String.valueOf(prediction.risetime)}"
+                    tools:text="Martes 15 de diciembre a las 21:37"/>
+
+                <TextView
+                    android:id="@+id/item_prediction_duration"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{String.valueOf(prediction.duration)}"
+                    tools:text="Durante 10 minutos y 14 segundos"/>
+            </LinearLayout>
+
+        </LinearLayout>
+</FrameLayout>
+</layout>
