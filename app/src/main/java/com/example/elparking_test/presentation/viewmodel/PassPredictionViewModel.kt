@@ -13,7 +13,7 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class PassPredictionViewModel : ViewModel() {
-    private lateinit var predictionParams: PredictionParams
+    private var predictionParams: PredictionParams? = null
     private val service = PassPredictionAPIClient.getClient()!!.create(PassPredictionService::class.java)
     private val _selectedPrediction = MutableLiveData<Prediction>()
     val selectedPrediction: LiveData<Prediction>
@@ -30,6 +30,7 @@ class PassPredictionViewModel : ViewModel() {
 
     fun setPredictionParams(predictionParams: PredictionParams){
         this.predictionParams = predictionParams
+        loadPredictions()
     }
 
     fun setSelectedPrediction(prediction: Prediction){
@@ -37,12 +38,17 @@ class PassPredictionViewModel : ViewModel() {
     }
 
     private fun loadPredictions() {
-        service.getNextPassPredictions(
-            lat = predictionParams.lat,
-            lon = predictionParams.lon,
-            alt = predictionParams.alt,
-            n = 10).enqueue(object : Callback<PredictionResponse> {
-                override fun onResponse(call: Call<PredictionResponse>, response: Response<PredictionResponse>) {
+        if (predictionParams !== null) {
+            service.getNextPassPredictions(
+                lat = predictionParams!!.lat,
+                lon = predictionParams!!.lon,
+                alt = predictionParams!!.alt,
+                n = 10
+            ).enqueue(object : Callback<PredictionResponse> {
+                override fun onResponse(
+                    call: Call<PredictionResponse>,
+                    response: Response<PredictionResponse>
+                ) {
                     if (response.body() !== null) {
                         val data = (response.body() as PredictionResponse)
                         predictions.value = data
@@ -53,5 +59,6 @@ class PassPredictionViewModel : ViewModel() {
                     //TODO
                 }
             })
+        }
     }
 }

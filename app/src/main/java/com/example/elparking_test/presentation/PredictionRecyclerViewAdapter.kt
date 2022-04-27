@@ -1,6 +1,7 @@
 package com.example.elparking_test.presentation
 
 
+import android.text.format.DateUtils
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,6 +11,10 @@ import com.example.elparking_test.core.domain.Prediction
 import com.example.elparking_test.core.domain.Response
 import com.example.elparking_test.databinding.FragmentPredictionListItemBinding
 import java.text.SimpleDateFormat
+import java.time.Instant.now
+import java.time.LocalDate
+import java.time.LocalDate.now
+import java.time.LocalDateTime.now
 import java.util.*
 
 
@@ -24,10 +29,15 @@ class PredictionRecyclerViewAdapter(
         fun bind(position: Int) {
             val predictionResponse = predictions?.get(position)!!
             val dateFormat = SimpleDateFormat("EEEE d 'de' MMMM 'a las' hh:mm", Locale("es", "ES"))
-            val riseTime = dateFormat.format(predictionResponse.risetime.toLong() * 1000)
+            val dateOfPrediction = Date(predictionResponse.risetime.toLong() * 1000)
+            val formattedDateOfPrediction = dateFormat.format(dateOfPrediction)
+            val currentDate = Calendar.getInstance().time;
             val prediction = Prediction(
-                duration = predictionResponse.duration,
-                risetime = riseTime
+                duration = predictionResponse.duration.toInt(),
+                durationInMinutes = (predictionResponse.duration / 60).toInt(),
+                durationInSeconds = (predictionResponse.duration % 60).toInt(),
+                timeLeft = (dateOfPrediction.time - currentDate.time) /1000,
+                dateOfPrediction = formattedDateOfPrediction
             )
             binding.prediction = prediction
             binding.executePendingBindings()

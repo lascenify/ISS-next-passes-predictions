@@ -19,23 +19,33 @@ import javax.inject.Inject
 class PredictionDetailFragment: Fragment(R.layout.fragment_prediction_detail)  {
     private val viewModel: PassPredictionViewModel by activityViewModels()
     private val curiosityViewModel: PassPredictionCuriosityViewModel by activityViewModels()
+    private lateinit var binding: FragmentPredictionDetailBinding
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
 
-        val binding = FragmentPredictionDetailBinding.inflate(
+        binding = FragmentPredictionDetailBinding.inflate(
             inflater,
             container,
             false
         )
         viewModel.selectedPrediction.observe(this.viewLifecycleOwner, Observer<Prediction> {prediction ->
             binding.prediction = prediction
+            curiosityViewModel.setNumber(prediction.duration)
+            getCuriosity()
         })
 
-        curiosityViewModel.getCuriosity().observe(this.viewLifecycleOwner, { curiosity ->
-            binding.curiosityTextview.text = curiosity
-        })
+
         return binding.root
+    }
+
+    private fun getCuriosity(){
+        curiosityViewModel.getCuriosity().observe(this.viewLifecycleOwner) { curiosity ->
+            binding.curiosityTextview.text =
+                binding.prediction?.duration.toString() +
+                        " son los segundos que durará el sobrevuelo y, además, " +
+                        curiosity
+        }
     }
 }

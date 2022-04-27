@@ -40,7 +40,7 @@
                 android:id="@+id/risetime_textview"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@{String.valueOf(prediction.duration)}"
+                android:text="@{String.valueOf(prediction.timeLeft)}"
                 android:textAppearance="@style/TextAppearance.AppCompat.Display3"
                 android:textStyle="bold" />
 
@@ -49,7 +49,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="segundos"
+                android:text=" segundos"
                 android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
         </LinearLayout>
 
@@ -62,14 +62,29 @@
                 android:id="@+id/textview4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="El sobrevuelo durará" />
+                android:text="El sobrevuelo durará " />
 
             <TextView
                 android:id="@+id/duration_textview"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="TextView" />
+                android:text="@{String.valueOf(prediction.durationInMinutes)}" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text=" minutos y" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@{String.valueOf(prediction.durationInSeconds)}" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text=" segundos" />
         </LinearLayout>
 
     </LinearLayout>

@@ -23,7 +23,6 @@ import com.google.android.gms.location.LocationServices
 class PredictionListFragment: Fragment(R.layout.fragment_prediction_list) {
     private lateinit var predictionsAdapter: PredictionRecyclerViewAdapter
     private val viewModel: PassPredictionViewModel by activityViewModels()
-    private lateinit var fusedLocationClient: FusedLocationProviderClient
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -35,8 +34,6 @@ class PredictionListFragment: Fragment(R.layout.fragment_prediction_list) {
             false
         )
 
-        fusedLocationClient = LocationServices.getFusedLocationProviderClient(requireActivity())
-        checkLocationPermissions()
         predictionsAdapter = PredictionRecyclerViewAdapter(R.layout.fragment_prediction_list_item) { prediction ->
             viewModel.setSelectedPrediction(prediction)
             val action = PredictionListFragmentDirections.actionMainToDetailFragment()
@@ -47,53 +44,11 @@ class PredictionListFragment: Fragment(R.layout.fragment_prediction_list) {
     }
 
 
-    private fun checkLocationPermissions(){
-        val requestPermissionLauncher =
-            registerForActivityResult(
-                ActivityResultContracts.RequestPermission()
-            ) { isGranted: Boolean ->
-                if (isGranted) {
-                    val lastLocation = fusedLocationClient.lastLocation.result
-                    createViewModel(lastLocation)
-                    getPredictions()
-                } else {
-                    viewModel.setPredictionParams(PredictionParams(
-                        lat = 40.0,
-                        lon = -0.5,
-                        alt = null
-                    ))
-                    getPredictions()
-                }
-            }
-        if (ActivityCompat.checkSelfPermission(
-                requireActivity().applicationContext,
-                Manifest.permission.ACCESS_FINE_LOCATION
-            ) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(
-                requireActivity().applicationContext,
-                Manifest.permission.ACCESS_COARSE_LOCATION
-            ) != PackageManager.PERMISSION_GRANTED
-        ) {
-            // Request permission
-            requestPermissionLauncher.launch(
-                Manifest.permission.ACCESS_FINE_LOCATION
-            )
-            return
-        } else {
-            fusedLocationClient.lastLocation.addOnSuccessListener { lastLocation ->
-                createViewModel(lastLocation)
-                getPredictions()
-            }
-
-        }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        getPredictions()
     }
 
-    private fun createViewModel(lastLocation: Location){
-        viewModel.setPredictionParams(PredictionParams(
-            lat = lastLocation.latitude,
-            lon = lastLocation.longitude,
-            alt = lastLocation.altitude
-        ))
-    }
 
     private fun getPredictions(){
         viewModel.getPredictions().observe(requireActivity()) { predictions ->

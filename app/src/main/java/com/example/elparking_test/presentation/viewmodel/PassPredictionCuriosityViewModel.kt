@@ -15,11 +15,7 @@ import retrofit2.Response
 class PassPredictionCuriosityViewModel : ViewModel() {
     private val service = NumberCuriosityAPIClient.getClient()!!.create(NumberCuriosityService::class.java)
     private var _param: Int = 0
-    private val curiosity: MutableLiveData<String> by lazy {
-        MutableLiveData<String>().also {
-            loadCuriosity()
-        }
-    }
+    private val curiosity = MutableLiveData<String>()
 
     fun getCuriosity(): LiveData<String> {
         return curiosity
@@ -27,6 +23,7 @@ class PassPredictionCuriosityViewModel : ViewModel() {
 
     fun setNumber(number: Int){
         _param = number
+        loadCuriosity()
     }
 
     private fun loadCuriosity() {

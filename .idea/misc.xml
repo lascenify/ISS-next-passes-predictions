@@ -5,19 +5,20 @@
       <map>
         <entry key="app/src/main/res/layout-w1240dp/content_scrolling.xml" value="0.292578125" />
         <entry key="app/src/main/res/layout-w936dp/content_scrolling.xml" value="0.25580601092896177" />
-        <entry key="app/src/main/res/layout/activity_main.xml" value="0.20833333333333334" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_scrolling.xml" value="0.3392210144927536" />
         <entry key="app/src/main/res/layout/content_scrolling.xml" value="0.3392210144927536" />
         <entry key="app/src/main/res/layout/fragment_item.xml" value="0.11510416666666666" />
         <entry key="app/src/main/res/layout/fragment_item_list.xml" value="0.10104166666666667" />
-        <entry key="app/src/main/res/layout/fragment_prediction_detail.xml" value="0.25" />
-        <entry key="app/src/main/res/layout/fragment_prediction_list.xml" value="0.22" />
-        <entry key="app/src/main/res/layout/fragment_prediction_list_item.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/fragment_prediction_detail.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/fragment_prediction_list.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/fragment_prediction_list_item.xml" value="0.33483428955078126" />
         <entry key="app/src/main/res/layout/item_prediction.xml" value="0.22" />
         <entry key="app/src/main/res/layout/layout_recycler_predictions.xml" value="0.20833333333333334" />
         <entry key="app/src/main/res/layout/main.xml" value="0.1" />
         <entry key="app/src/main/res/layout/prediction_detail.xml" value="0.1" />
         <entry key="app/src/main/res/layout/prediction_list.xml" value="0.11510416666666666" />
+        <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.1215" />
         <entry key="app/src/main/res/xml/network_security_config.xml" value="0.18697916666666667" />
       </map>
     </option>

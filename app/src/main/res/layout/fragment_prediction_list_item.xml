@@ -21,26 +21,53 @@
                 android:id="@+id/item_prediction_avatar"
                 android:layout_width="48dp"
                 android:layout_height="48dp"
-                app:srcCompat="@android:mipmap/sym_def_app_icon" />
+                app:srcCompat="@android:drawable/ic_menu_mylocation" />
 
             <LinearLayout
-                android:layout_width="270dp"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:paddingLeft="8dp">
 
                 <TextView
                     android:id="@+id/item_prediction_date"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@{String.valueOf(prediction.risetime)}"
-                    tools:text="Martes 15 de diciembre a las 21:37"/>
+                    android:text="@{prediction.dateOfPrediction}"
+                    tools:text="Martes 15 de diciembre a las 21:37" />
 
-                <TextView
-                    android:id="@+id/item_prediction_duration"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@{String.valueOf(prediction.duration)}"
-                    tools:text="Durante 10 minutos y 14 segundos"/>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Durante " />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@{String.valueOf(prediction.durationInMinutes)}"
+                        tools:text=" 10" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=" minutos y"
+                        tools:text=" minutos y" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@{String.valueOf(prediction.durationInSeconds)}" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=" segundos" />
+                </LinearLayout>
+
             </LinearLayout>
 
         </LinearLayout>
