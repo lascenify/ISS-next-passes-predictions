@@ -51,8 +51,8 @@ class PassPredictionServiceTest {
             -0.5,
             1
         )?.get(0)?.getAddressLine(0)
-        val params = PredictionParams(40.0, -0.5, null)
-        val forecast = service.getNextPassPredictions(params.lat, params.lon, params.alt, 10).execute()
+        val params = PredictionParams(40.0, -0.5)
+        val forecast = service.getNextPassPredictions(params.lat, params.lon, null, 10).execute()
         MatcherAssert.assertThat(forecast, CoreMatchers.notNullValue())
         MatcherAssert.assertThat(forecast?.body()?.response?.size, `is`(10))
     }

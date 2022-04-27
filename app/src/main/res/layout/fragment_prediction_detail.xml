@@ -41,14 +41,18 @@
                     android:id="@+id/risetime_textview"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-black"
                     android:text="@{String.valueOf(prediction.timeLeft)}"
                     android:textAppearance="@style/TextAppearance.AppCompat.Display3"
-                    android:textStyle="bold" />
+                    android:textSize="48sp"
+                    android:textStyle="bold"
+                    tools:text="123412" />
 
                 <TextView
                     android:id="@+id/textView3"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
                     android:layout_weight="1"
                     android:text="@string/prediction_detail_seconds"
                     android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
