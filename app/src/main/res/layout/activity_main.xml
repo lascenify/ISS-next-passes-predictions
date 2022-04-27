@@ -5,7 +5,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:fitsSystemWindows="true"
     tools:context=".ScrollingActivity">
-
+    <data>
+        <import type="android.view.View"/>
+        <import type="com.example.elparking_test.presentation.viewmodel.PassPredictionViewModel"/>
+        <variable
+            name="viewModel"
+            type="com.example.elparking_test.presentation.viewmodel.PassPredictionViewModel" />
+    </data>
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -27,26 +33,73 @@
                 android:theme="@style/Theme.Elparkingtest.AppBarOverlay"
                 app:title="@string/app_name" />
 
-            <com.google.android.material.appbar.MaterialToolbar
-                android:id="@+id/navigation_toolbar"
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <FrameLayout
+            android:id="@+id/frameLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#757575"
+            app:layout_constraintTop_toBottomOf="@+id/appbar"
+            tools:layout_editor_absoluteX="5dp">
+
+            <TextView
+                android:id="@+id/location_textview"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="#505050"
-                app:titleTextColor="#FFFFFF" />
+                android:padding="5dp"
+                android:textColor="#FFFFFF" />
+        </FrameLayout>
 
-        </com.google.android.material.appbar.AppBarLayout>
+        <LinearLayout
+            android:id="@+id/linearLayout4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:background="#C35252"
+            android:orientation="vertical"
+            android:padding="5dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/frameLayout"
+            android:visibility="@{viewModel.predictionError || viewModel.locationError || !viewModel.locationPermissionGranted ? View.VISIBLE : View.GONE}">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/prediction_error"
+                android:textColor="#FFFFFF"
+                android:visibility="@{viewModel.predictionError ? View.VISIBLE : View.GONE}" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/location_error"
+                android:textColor="#FFFFFF"
+                android:visibility="@{viewModel.locationError ? View.VISIBLE : View.GONE}" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/permission_not_granted"
+                android:textColor="#FFFFFF"
+                android:visibility="@{viewModel.locationPermissionGranted ? View.GONE : View.VISIBLE}" />
+
+        </LinearLayout>
 
         <androidx.fragment.app.FragmentContainerView
             android:id="@+id/nav_host"
             android:name="androidx.navigation.fragment.NavHostFragment"
             android:layout_width="match_parent"
             android:layout_height="0dp"
+            android:layout_marginTop="16dp"
+            android:visibility="@{viewModel.predictionError ? View.GONE : View.VISIBLE}"
             app:defaultNavHost="true"
-            app:navGraph="@navigation/main_navigation"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/appbar" />
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout4"
+            app:navGraph="@navigation/main_navigation" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

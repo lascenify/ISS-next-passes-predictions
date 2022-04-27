@@ -40,9 +40,7 @@ class PredictionDetailFragment: Fragment(R.layout.fragment_prediction_detail)  {
     private fun getCuriosity(){
         curiosityViewModel.getCuriosity().observe(this.viewLifecycleOwner) { curiosity ->
             binding.curiosityTextview.text =
-                binding.prediction?.duration.toString() +
-                        " son los segundos que durará el sobrevuelo y, además, " +
-                        curiosity
+                "${binding.prediction?.duration.toString()}${getString(R.string.duration_description)}$curiosity"
         }
     }
 }

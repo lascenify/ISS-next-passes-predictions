@@ -9,6 +9,7 @@ import com.example.elparking_test.models.PredictionResponse
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Query
+import java.math.BigDecimal
 
 interface PassPredictionService {
     @GET(PASS_PREDICTIONS)
@@ -18,7 +19,7 @@ interface PassPredictionService {
         @Query(PARAM_LON)
         lon:Double,
         @Query(PARAM_ALT)
-        alt: Double?,
+        alt: Int?,
         @Query(PARAM_N)
         n: Int?
     ): Call<PredictionResponse>

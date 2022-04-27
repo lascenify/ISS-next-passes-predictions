@@ -93,4 +93,9 @@
     <string name="scroll_description">Scroll</string>
 
     <string name="detail_title">Hasta el sobrevuelo quedan: </string>
+    <string name="prediction_detail_seconds">segundos</string>
+    <string name="duration_description">\ son los segundos que durará el sobrevuelo y, además, \</string>
+    <string name="prediction_error">Ha ocurrido un error en la predicción de los próximos sobrevuelos. Por favor, inténtelo más tarde</string>
+    <string name="location_error">No se ha podido obtener su localización, por lo que se usará la localidad de Madrid como ejemplo</string>
+    <string name="permission_not_granted">El permiso a la ubicación ha sido denegado. Por favor, permítalo desde los ajustes de su dispositivo. Como ejemplo, se usará la ubicación de Madrid</string>
 </resources>
