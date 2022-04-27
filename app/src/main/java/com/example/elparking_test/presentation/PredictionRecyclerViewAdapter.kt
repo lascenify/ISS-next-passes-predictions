@@ -1,20 +1,14 @@
 package com.example.elparking_test.presentation
 
 
-import android.text.format.DateUtils
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.example.elparking_test.core.domain.Prediction
-import com.example.elparking_test.core.domain.Response
+import com.example.elparking_test.models.Prediction
+import com.example.elparking_test.models.Response
 import com.example.elparking_test.databinding.FragmentPredictionListItemBinding
 import java.text.SimpleDateFormat
-import java.time.Instant.now
-import java.time.LocalDate
-import java.time.LocalDate.now
-import java.time.LocalDateTime.now
 import java.util.*
 
 

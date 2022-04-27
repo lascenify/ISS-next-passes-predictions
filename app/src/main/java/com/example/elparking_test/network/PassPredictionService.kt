@@ -5,7 +5,7 @@ import com.example.elparking_test.utils.Constants.PassPredictionService.PARAM_LA
 import com.example.elparking_test.utils.Constants.PassPredictionService.PARAM_LON
 import com.example.elparking_test.utils.Constants.PassPredictionService.PARAM_N
 import com.example.elparking_test.utils.Constants.PassPredictionService.PASS_PREDICTIONS
-import com.example.elparking_test.core.domain.PredictionResponse
+import com.example.elparking_test.models.PredictionResponse
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Query

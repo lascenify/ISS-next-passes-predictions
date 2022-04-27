@@ -4,14 +4,12 @@ import android.Manifest
 import android.annotation.SuppressLint
 import android.content.pm.PackageManager
 import android.location.Geocoder
-import android.location.Location
 import android.os.Bundle
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
-import androidx.fragment.app.activityViewModels
-import com.example.elparking_test.core.domain.PredictionParams
+import com.example.elparking_test.models.PredictionParams
 import com.example.elparking_test.databinding.ActivityMainBinding
 import com.example.elparking_test.presentation.viewmodel.PassPredictionViewModel
 import com.google.android.gms.location.FusedLocationProviderClient
@@ -88,7 +86,6 @@ class ScrollingActivity : AppCompatActivity() {
         )[0].getAddressLine(0)
         binding.navigationToolbar.title = "Estás en $address"
         viewModel.setPredictionParams(PredictionParams(
-            address = address,
             lat = latitude,
             lon = longitude,
             alt = altitude

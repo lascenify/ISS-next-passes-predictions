@@ -1,4 +1,4 @@
-package com.example.elparking_test.core.domain
+package com.example.elparking_test.models
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
@@ -13,4 +13,4 @@ data class PredictionResponse(
 
     @Json(name= "response")
     val response: Array<Response>?,
-    )
+)

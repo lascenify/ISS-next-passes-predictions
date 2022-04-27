@@ -1,7 +1,4 @@
-package com.example.elparking_test.core.domain
-
-import com.squareup.moshi.Json
-import java.util.*
+package com.example.elparking_test.models
 
 data class Prediction (
     val duration: Int,
@@ -9,4 +6,4 @@ data class Prediction (
     val durationInSeconds: Int,
     val timeLeft: Long,
     val dateOfPrediction: String
-        )
+)

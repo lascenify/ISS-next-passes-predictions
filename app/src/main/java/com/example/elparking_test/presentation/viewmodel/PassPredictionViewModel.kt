@@ -3,9 +3,9 @@ package com.example.elparking_test.presentation.viewmodel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.elparking_test.core.domain.Prediction
-import com.example.elparking_test.core.domain.PredictionParams
-import com.example.elparking_test.core.domain.PredictionResponse
+import com.example.elparking_test.models.Prediction
+import com.example.elparking_test.models.PredictionParams
+import com.example.elparking_test.models.PredictionResponse
 import com.example.elparking_test.network.PassPredictionAPIClient
 import com.example.elparking_test.network.PassPredictionService
 import retrofit2.Call

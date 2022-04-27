@@ -5,7 +5,7 @@
     <data>
         <variable
             name="prediction"
-            type="com.example.elparking_test.core.domain.Prediction" />
+            type="com.example.elparking_test.models.Prediction" />
     </data>
 <FrameLayout
     android:layout_width="match_parent"
