@@ -18,3 +18,7 @@ App written in Kotlin that shows upcoming ISS passes for a particular location
 ### Testing
 - [JUnit4](https://github.com/junit-team/junit4)
 - [Mockito](https://github.com/mockito/mockito)
+
+## Screenshots
+<img src="https://user-images.githubusercontent.com/18697610/165589323-478fc82b-06f9-429e-adf1-f34b85dd22e0.png" width="270" height="570" />
+<img src="https://user-images.githubusercontent.com/18697610/165589307-c39ee163-fd0a-4484-8b3e-307b9ce1d052.png" width="270" height="570" />
